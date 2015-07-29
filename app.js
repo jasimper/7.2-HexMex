@@ -5,16 +5,25 @@
     request.onload = callback;
     request.send();
   };
-  var handleResponse = function(e) {
-    var items = JSON.parse(e.target.responseText);
-    items.forEach(function(item) {
-      var dominant, contrastingDominant, subDominant, contrastingSubDominant, pop, hex
+  var handleResponse = function(event) {
+    var groups = JSON.parse(event.target.responseText);
+    groups.forEach(function(group) {
+      var dominant,
+          contrastingDominant,
+          subDominant,
+          contrastingSubDominant,
+          pop,
+          hex
       palette = document.createElement('div');
       palette.className = 'palette'
+      palette.setAttribute('data-js', group.keyword)
       title = document.createElement('h3');
-      title.innerHTML = item.title
+      title.innerHTML = group.title
+      keyword = document.createElement('p')
+      keyword.innerHTML = group.keyword
 
-      var color = item.colors;
+      var color = group.colors;
+
       //dominant color
       dominant = document.createElement('div');
       dominant.className = "dominant";
@@ -67,6 +76,7 @@
 
 
       palette.appendChild(title);
+      palette.appendChild(keyword);
       palette.appendChild(dominant);
       palette.appendChild(contrastingDominant);
       palette.appendChild(subDominant);
