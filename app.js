@@ -6,8 +6,8 @@
     request.send();
   };
   var handleResponse = function(event) {
-    var groups = JSON.parse(event.target.responseText);
-    groups.forEach(function(group) {
+    var paletteGroups = JSON.parse(event.target.responseText);
+    paletteGroups.forEach(function(palatteGroup) {
       var dominant,
           contrastingDominant,
           subDominant,
@@ -16,13 +16,17 @@
           hex
       palette = document.createElement('div');
       palette.className = 'palette'
-      palette.setAttribute('data-js', group.keyword)
-      title = document.createElement('h3');
-      title.innerHTML = group.title
-      keyword = document.createElement('p')
-      keyword.innerHTML = group.keyword
+      palette.setAttribute('data-js', palatteGroup.keyword)
 
-      var color = group.colors;
+      title = document.createElement('h3');
+      title.innerHTML = palatteGroup.title;
+      palette.appendChild(title);
+
+      keyword = document.createElement('p');
+      keyword.innerHTML = palatteGroup.keyword;
+      palette.appendChild(keyword);
+
+      var color = palatteGroup.colors;
 
       //dominant color
       dominant = document.createElement('div');
@@ -33,6 +37,7 @@
       hex.className = "hex";
       hex.innerHTML = color.dominant;
       dominant.appendChild(hex);
+      palette.appendChild(dominant);
 
       //contrastingDominant
       contrastingDominant = document.createElement('div');
@@ -43,6 +48,7 @@
       hex.className = "hex";
       hex.innerHTML = color.contrastingDominant;
       contrastingDominant.appendChild(hex);
+      palette.appendChild(contrastingDominant);
 
       //subDominant
       subDominant = document.createElement('div');
@@ -53,6 +59,7 @@
       hex.className = "hex";
       hex.innerHTML = color.subDominant;
       subDominant.appendChild(hex);
+      palette.appendChild(subDominant);
 
       //contrastingDominant
       contrastingSubDominant = document.createElement('div');
@@ -63,6 +70,7 @@
       hex.className = "hex";
       hex.innerHTML = color.contrastingSubDominant;
       contrastingSubDominant.appendChild(hex);
+      palette.appendChild(contrastingSubDominant);
 
       //pop
       pop = document.createElement('div');
@@ -73,14 +81,6 @@
       hex.className = "hex";
       hex.innerHTML = color.pop;
       pop.appendChild(hex);
-
-
-      palette.appendChild(title);
-      palette.appendChild(keyword);
-      palette.appendChild(dominant);
-      palette.appendChild(contrastingDominant);
-      palette.appendChild(subDominant);
-      palette.appendChild(contrastingSubDominant);
       palette.appendChild(pop);
 
       document.body.appendChild(palette, document.body);

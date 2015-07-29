@@ -33,21 +33,16 @@ p {
   border-radius: 11px;
 }
 .dominant {
-  display: inline-block;
-  height: 70px;
-  width: 20%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 0 0 0 10px;
 }
-.contrastingDominant, .subDominant, .contrastingSubDominant {
+.dominant, .contrastingDominant, .subDominant, .contrastingSubDominant, .pop  {
   display: inline-block;
   height: 70px;
   width: 20%;
+  border-top: solid 1px #6D6D6D;
 }
 .pop {
-  display: inline-block;
-  height: 70px;
-  width: 20%;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 0 10px 0;
 }
 .hex {
   display: block;
@@ -57,9 +52,8 @@ p {
   text-align: center;
   line-height: 35px;
   border-radius: 5px;
-
 }
 .hex:hover {
-  background-color: #FFFFFF;
-  color: #6D6D6D;
+  background: rgba(235, 235, 235, 0.6);
+  color: #4D4D4D;
 }
