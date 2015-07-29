@@ -12,6 +12,13 @@ body {
   color: #4D4D4D;
   font-size: 1em;
 }
+header {
+  text-align: right;
+  padding: 0 10px;
+}
+h1 {
+  font-size: 1.7rem;
+}
 h3 {
   display: inline-block;
   width: 50%;

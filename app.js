@@ -6,6 +6,13 @@
     request.send();
   };
   var handleResponse = function(event) {
+
+    header = document.createElement('header');
+    headerText = document.createElement('h1');
+    headerText.innerText = 'HexMex';
+    header.appendChild(headerText);
+    document.body.insertBefore(header, document.body.childNodes[0]);
+
     var paletteGroups = JSON.parse(event.target.responseText);
     paletteGroups.forEach(function(palatteGroup) {
       var dominant,
